@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.unipay.dsf.dto.MobileLocal">
+	<resultMap type="com.unipay.dsf.dto.MobileLocal" id="mobileLocal">  
+        <result property="mobileNo" column="mobileno"/>  
+        <result property="areaCode" column="areacode" /> 
+        <result property="vendorType" column="vendortype" />  
+        <result property="cityName" column="cityname" />  
+        <result property="provName" column="provname" />  
+    </resultMap>  
+    <select id="mobileLocalFindAll" resultMap="mobileLocal">  
+        select MOBILE_SEG as mobileno,VENDOR_TYPE as vendortype,PROV_NAME as provname ,CITY_NAME as cityname,AREA_CODE as areacode
+        from BDW_DIM.DIM_MOBILE_SEG
+    </select>  
+    <select id="mobileLocalFindByKey" parameterType="String"  resultMap="mobileLocal">  
+        select MOBILE_SEG as mobileno,VENDOR_TYPE as vendortype,PROV_NAME as provname ,CITY_NAME as cityname,AREA_CODE as areacode
+        from BDW_DIM.DIM_MOBILE_SEG
+        where MOBILE_SEG like '%'||#{key}||'%'
+    </select>  
+
+</mapper>

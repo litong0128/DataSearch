@@ -1,0 +1,420 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.unipay.dsf</groupId>
+	<artifactId>DataSearch</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>DataSearch</name>
+
+	<properties>
+		<commons.version>6.1.00.SPC001</commons.version>
+		<!-- <commons.version2>3.5.10SPC010</commons.version2> -->
+		<spring.version>3.2.18.RELEASE</spring.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- 编译时的编码 -->
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.huawei.csc.usf</groupId>
+			<artifactId>com.huawei.csc.usf.framework</artifactId>
+			<version>${commons.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.huawei.csc.usf</groupId>
+			<artifactId>com.huawei.csc.usf.adapter.dsf</artifactId>
+			<version>${commons.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.huawei.csc.usf</groupId>
+			<artifactId>com.huawei.csc.usf.sync.zkdata</artifactId>
+			<version>${commons.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool-cglib</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.29</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.6.6.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.clojars.prepor</groupId>
+			<artifactId>vertica-jdbc</artifactId>
+			<version>7.0.1-0</version>
+		</dependency>
+
+		<!-- aop相关jar -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<finalName>DataSearch</finalName>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**.properties</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<excludes>
+						<exclude>**/dsf.properties</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.2.v20140723</version>
+				<configuration>
+					<war>${project.basedir}/target/DataSearch.war</war>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<profiles>
+		<!-- 开发环境 -->
+		<profile>
+			<id>local</id>
+			<properties>
+				<!-- 日志目录设置 -->
+				<p.log4j.path>D:\Users\unicom\workspace_demo\DataSearch\log\</p.log4j.path>
+				<!-- vertica 数据库连接 -->
+				<p.jdbc.driverClassName>com.vertica.jdbc.Driver</p.jdbc.driverClassName>
+				<p.jdbc.url>192.168.7.74:5433</p.jdbc.url>
+				<p.jdbc.username>dbadmin</p.jdbc.username>
+				<p.jdbc.password>123456</p.jdbc.password>
+				<p.jdbc.maxActive>100</p.jdbc.maxActive>
+				<p.jdbc.maxIdle>30</p.jdbc.maxIdle>
+				<p.jdbc.maxWait>500</p.jdbc.maxWait>
+				<p.jdbc.defaultAutoCommit>true</p.jdbc.defaultAutoCommit>
+				<!-- redis 数据库设置 -->
+				<p.redis.host>127.0.0.1</p.redis.host>
+				<p.redis.port>6379</p.redis.port>
+				<p.redis.pass>12345678</p.redis.pass>
+				<p.redis.database>1</p.redis.database>
+				<p.redis.maxIdle>100</p.redis.maxIdle>
+				<p.redis.maxActive>300</p.redis.maxActive>
+				<p.redis.maxWait>1000</p.redis.maxWait>
+				<p.redis.testOnBorrow>true</p.redis.testOnBorrow>
+				<p.redis.timeout>1000</p.redis.timeout>
+				<!-- dsf发布配置 -->
+				<p.zk.server.url>192.168.7.131:2181</p.zk.server.url>
+				<!-- <p.dsf.protocol.tcp.address>127.0.0.1:20011</p.dsf.protocol.tcp.address> -->
+				<p.dsf.protocol.tcp.address>:20011</p.dsf.protocol.tcp.address>
+				<!-- redis存放key关系 -->
+				<p.redis.schema.mobileLocal>mobileLocal</p.redis.schema.mobileLocal>
+			</properties>
+		</profile>
+
+
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- 日志目录设置 -->
+				<p.log4j.path>/app/jfuser/apache-tomcat-dsf/logs/appLog/</p.log4j.path>
+				<!-- vertica 数据库连接 -->
+				<p.jdbc.driverClassName>com.vertica.jdbc.Driver</p.jdbc.driverClassName>
+				<p.jdbc.url>192.168.7.74:5433</p.jdbc.url>
+				<p.jdbc.username>dbadmin</p.jdbc.username>
+				<p.jdbc.password>123456</p.jdbc.password>
+				<p.jdbc.maxActive>100</p.jdbc.maxActive>
+				<p.jdbc.maxIdle>30</p.jdbc.maxIdle>
+				<p.jdbc.maxWait>500</p.jdbc.maxWait>
+				<p.jdbc.defaultAutoCommit>true</p.jdbc.defaultAutoCommit>
+				<!-- redis 数据库设置 -->
+				<p.redis.host>192.168.9.93</p.redis.host>
+				<p.redis.port>6379</p.redis.port>
+				<p.redis.pass>12120415</p.redis.pass>
+				<p.redis.database>1</p.redis.database>
+				<p.redis.maxIdle>100</p.redis.maxIdle>
+				<p.redis.maxActive>300</p.redis.maxActive>
+				<p.redis.maxWait>1000</p.redis.maxWait>
+				<p.redis.testOnBorrow>true</p.redis.testOnBorrow>
+				<p.redis.timeout>1000</p.redis.timeout>
+				<!-- dsf发布配置 -->
+				<p.zk.server.url>192.168.7.173:6830\,192.168.7.174:6830\,192.168.7.176:6830</p.zk.server.url>
+				<p.dsf.protocol.tcp.address>:20021</p.dsf.protocol.tcp.address>
+				<!-- redis存放key关系 -->
+				<p.redis.schema.mobileLocal>mobileLocal</p.redis.schema.mobileLocal>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>sys2</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- 日志目录设置 -->
+				<p.log4j.path>/app/jfuser/apache-tomcat-dsf/logs/appLog/</p.log4j.path>
+				<!-- vertica 数据库连接 -->
+				<p.jdbc.driverClassName>com.vertica.jdbc.Driver</p.jdbc.driverClassName>
+				<p.jdbc.url>192.168.7.74:5433</p.jdbc.url>
+				<p.jdbc.username>dbadmin</p.jdbc.username>
+				<p.jdbc.password>123456</p.jdbc.password>
+				<p.jdbc.maxActive>100</p.jdbc.maxActive>
+				<p.jdbc.maxIdle>30</p.jdbc.maxIdle>
+				<p.jdbc.maxWait>500</p.jdbc.maxWait>
+				<p.jdbc.defaultAutoCommit>true</p.jdbc.defaultAutoCommit>
+				<!-- redis 数据库设置 -->
+				<p.redis.host>192.168.9.93</p.redis.host>
+				<p.redis.port>6379</p.redis.port>
+				<p.redis.pass>12120415</p.redis.pass>
+				<p.redis.database>1</p.redis.database>
+				<p.redis.maxIdle>100</p.redis.maxIdle>
+				<p.redis.maxActive>300</p.redis.maxActive>
+				<p.redis.maxWait>1000</p.redis.maxWait>
+				<p.redis.testOnBorrow>true</p.redis.testOnBorrow>
+				<p.redis.timeout>1000</p.redis.timeout>
+				<!-- dsf发布配置 -->
+				<p.zk.server.url>192.168.7.86:2181\,192.168.7.87:2181\,192.168.7.88:2181</p.zk.server.url>
+				<p.dsf.protocol.tcp.address>:20023</p.dsf.protocol.tcp.address>
+				<!-- redis存放key关系 -->
+				<p.redis.schema.mobileLocal>mobileLocal</p.redis.schema.mobileLocal>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>pro</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- 日志目录设置 -->
+				<p.log4j.path>/app/teleinfo/logs/dsf/</p.log4j.path>
+				<!-- vertica 数据库连接 -->
+				<p.jdbc.driverClassName>com.vertica.jdbc.Driver</p.jdbc.driverClassName>
+				<p.jdbc.url>172.16.40.11:5433</p.jdbc.url>
+				<p.jdbc.username>rptusr2</p.jdbc.username>
+				<p.jdbc.password>Rptuser1</p.jdbc.password>
+				<p.jdbc.maxActive>100</p.jdbc.maxActive>
+				<p.jdbc.maxIdle>30</p.jdbc.maxIdle>
+				<p.jdbc.maxWait>500</p.jdbc.maxWait>
+				<p.jdbc.defaultAutoCommit>true</p.jdbc.defaultAutoCommit>
+				<!-- redis 数据库设置 -->
+				<p.redis.host>192.168.80.77</p.redis.host>
+				<p.redis.port>6379</p.redis.port>
+				<p.redis.pass>12120415</p.redis.pass>
+				<p.redis.database>1</p.redis.database>
+				<p.redis.maxIdle>100</p.redis.maxIdle>
+				<p.redis.maxActive>300</p.redis.maxActive>
+				<p.redis.maxWait>1000</p.redis.maxWait>
+				<p.redis.testOnBorrow>true</p.redis.testOnBorrow>
+				<p.redis.timeout>1000</p.redis.timeout>
+				<!-- dsf发布配置 -->
+				<p.zk.server.url>192.168.11.83:2181\,192.168.11.114:2181\,192.168.11.121:2181</p.zk.server.url>
+				<!-- <p.dsf.protocol.tcp.address>192.168.80.77:20011</p.dsf.protocol.tcp.address> -->
+				<p.dsf.protocol.tcp.address>:20011</p.dsf.protocol.tcp.address>
+				<!-- redis存放key关系 -->
+				<p.redis.schema.mobileLocal>mobileLocal</p.redis.schema.mobileLocal>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>guigu</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- 日志目录设置 -->
+				<p.log4j.path>/app/teleinfo/logs/dsf/</p.log4j.path>
+				<!-- vertica 数据库连接 -->
+				<p.jdbc.driverClassName>com.vertica.jdbc.Driver</p.jdbc.driverClassName>
+				<p.jdbc.url>172.16.40.11:5433</p.jdbc.url>
+				<p.jdbc.username>rptusr2</p.jdbc.username>
+				<p.jdbc.password>Rptuser1</p.jdbc.password>
+				<p.jdbc.maxActive>100</p.jdbc.maxActive>
+				<p.jdbc.maxIdle>30</p.jdbc.maxIdle>
+				<p.jdbc.maxWait>500</p.jdbc.maxWait>
+				<p.jdbc.defaultAutoCommit>true</p.jdbc.defaultAutoCommit>
+				<!-- redis 数据库设置 -->
+				<p.redis.host>172.16.104.15</p.redis.host>
+				<p.redis.port>6379</p.redis.port>
+				<p.redis.pass>12120415</p.redis.pass>
+				<p.redis.database>1</p.redis.database>
+				<p.redis.maxIdle>100</p.redis.maxIdle>
+				<p.redis.maxActive>300</p.redis.maxActive>
+				<p.redis.maxWait>1000</p.redis.maxWait>
+				<p.redis.testOnBorrow>true</p.redis.testOnBorrow>
+				<p.redis.timeout>1000</p.redis.timeout>
+				<!-- dsf发布配置 -->
+				<p.zk.server.url>172.16.73.161:2181\,172.16.73.162:2181\,172.16.73.163:2181</p.zk.server.url>
+				<!-- <p.dsf.protocol.tcp.address>172.16.104.15:20011</p.dsf.protocol.tcp.address> -->
+				<p.dsf.protocol.tcp.address>:20011</p.dsf.protocol.tcp.address>
+				<!-- redis存放key关系 -->
+				<p.redis.schema.mobileLocal>mobileLocal</p.redis.schema.mobileLocal>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>newst</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- 日志目录设置 -->
+				<p.log4j.path>/app/teleinfo/logs/dsf/</p.log4j.path>
+				<!-- vertica 数据库连接 -->
+				<p.jdbc.driverClassName>com.vertica.jdbc.Driver</p.jdbc.driverClassName>
+				<p.jdbc.url>172.16.40.11:5433</p.jdbc.url>
+				<p.jdbc.username>rptusr2</p.jdbc.username>
+				<p.jdbc.password>Rptuser1</p.jdbc.password>
+				<p.jdbc.maxActive>100</p.jdbc.maxActive>
+				<p.jdbc.maxIdle>30</p.jdbc.maxIdle>
+				<p.jdbc.maxWait>500</p.jdbc.maxWait>
+				<p.jdbc.defaultAutoCommit>true</p.jdbc.defaultAutoCommit>
+				<!-- redis 数据库设置 -->
+				<p.redis.host>172.18.104.15</p.redis.host>
+				<p.redis.port>6379</p.redis.port>
+				<p.redis.pass>12120415</p.redis.pass>
+				<p.redis.database>1</p.redis.database>
+				<p.redis.maxIdle>100</p.redis.maxIdle>
+				<p.redis.maxActive>300</p.redis.maxActive>
+				<p.redis.maxWait>1000</p.redis.maxWait>
+				<p.redis.testOnBorrow>true</p.redis.testOnBorrow>
+				<p.redis.timeout>1000</p.redis.timeout>
+				<!-- dsf发布配置 -->
+				<p.zk.server.url>172.18.73.161:2181\,172.18.73.162:2181\,172.18.73.163:2181</p.zk.server.url>
+				<!-- <p.dsf.protocol.tcp.address>172.16.104.15:20011</p.dsf.protocol.tcp.address> -->
+				<p.dsf.protocol.tcp.address>:20011</p.dsf.protocol.tcp.address>
+				<!-- redis存放key关系 -->
+				<p.redis.schema.mobileLocal>mobileLocal</p.redis.schema.mobileLocal>
+			</properties>
+		</profile>
+	</profiles>
+</project>
